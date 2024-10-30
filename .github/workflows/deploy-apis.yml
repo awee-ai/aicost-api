@@ -1,0 +1,95 @@
+# Simple workflow for deploying static content to GitHub Pages
+name: Commit and deploy currency information
+
+on:
+  schedule:
+    - cron: '0 0,12 * * *'
+  push:
+    branches: [ "main" ]
+    paths-ignore:
+      - 'data/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: "!contains(github.event.head_commit.message, 'api information update')"
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Setup go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.23'
+
+      - name: Setup go mod
+        working-directory: .github/assets
+        run: |
+          go mod init example
+          go mod tidy
+
+      - name: Create models/latest.json
+        working-directory: .github/assets
+        run: go run models.go
+
+      - name: Remove go.mod and go.sum
+        working-directory: .github/assets
+        run: |
+          rm -rf go.mod go.sum
+
+      - name: Create currencies/{year}/{date}.json
+        env:
+          OPENEXCHANGE_APP_ID: ${{ secrets.OPENEXCHANGE_APP_ID }}
+          BASE_DIR: data
+          DATA_DIR: currencies
+        run: node .github/assets/currencies.js
+
+      - name: Check for changes
+        id: git_changes
+        run: |
+          git status --porcelain
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit changes
+        if: steps.git_changes.outputs.changes == 'true'
+        run: |
+          git config --local user.email "devops@awee.ai"
+          git config --local user.name "GitHub Actions"
+          git add data/
+          git commit -m "chore: api information update for $(date +'%Y-%m-%d %H:%M:%S')"
+
+      - name: Push changes
+        if: steps.git_changes.outputs.changes == 'true'
+        run: |
+          git push "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" HEAD:${{ github.ref }}
+
+      - name: Upload artifact
+        if: steps.git_changes.outputs.changes == 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "data/"
+
+      - name: Deploy to GitHub Pages
+        if: steps.git_changes.outputs.changes == 'true'
+        id: deployment
+        uses: actions/deploy-pages@v4

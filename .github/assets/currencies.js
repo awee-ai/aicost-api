@@ -43,7 +43,7 @@ https.get(apiUrl, (res) => {
             // read index.html, replace {{ date }} with dateString and save it to index.html
             const indexHtmlPath = path.join(__dirname, 'index.html')
             const indexHtml = fs.readFileSync(indexHtmlPath, 'utf8')
-            const updatedIndexHtml = indexHtml.replace('{{ date }}', dateString)
+            const updatedIndexHtml = indexHtml.replace(/{{ date }}/g, dateString).replace(/{{ year }}/g, yearStr)
             fs.writeFileSync(path.join(cwd, baseDir, 'index.html'), updatedIndexHtml)
             console.log(`updated index.html with date: ${dateString}`, updatedIndexHtml)
 
