@@ -1,0 +1,204 @@
+[
+  {
+    "provider": "openai",
+    "model": "gpt-4o",
+    "releases": [
+      "2024-05-13",
+      "*"
+    ],
+    "cost_input": {
+      "units": 0,
+      "nanos": 500,
+      "currency_code": "USD"
+    },
+    "cost_output": {
+      "units": 0,
+      "nanos": 1500,
+      "currency_code": "USD"
+    }
+  },
+  {
+    "provider": "openai",
+    "model": "gpt-4-turbo",
+    "releases": [
+      "2024-04-09",
+      "instruct",
+      "*"
+    ],
+    "cost_input": {
+      "units": 0,
+      "nanos": 10000,
+      "currency_code": "USD"
+    },
+    "cost_output": {
+      "units": 0,
+      "nanos": 30000,
+      "currency_code": "USD"
+    }
+  },
+  {
+    "provider": "openai",
+    "model": "gpt-4",
+    "releases": null,
+    "cost_input": {
+      "units": 0,
+      "nanos": 30000,
+      "currency_code": "USD"
+    },
+    "cost_output": {
+      "units": 0,
+      "nanos": 60000,
+      "currency_code": "USD"
+    }
+  },
+  {
+    "provider": "openai",
+    "model": "gpt-4-32k",
+    "releases": null,
+    "cost_input": {
+      "units": 0,
+      "nanos": 60000,
+      "currency_code": "USD"
+    },
+    "cost_output": {
+      "units": 0,
+      "nanos": 120000,
+      "currency_code": "USD"
+    }
+  },
+  {
+    "provider": "openai",
+    "model": "gpt-4",
+    "releases": [
+      "0125",
+      "0125-preview",
+      "1106-preview",
+      "vision-preview"
+    ],
+    "cost_input": {
+      "units": 0,
+      "nanos": 10000,
+      "currency_code": "USD"
+    },
+    "cost_output": {
+      "units": 0,
+      "nanos": 30000,
+      "currency_code": "USD"
+    }
+  },
+  {
+    "provider": "openai",
+    "model": "gpt-3.5-turbo",
+    "releases": null,
+    "cost_input": {
+      "units": 0,
+      "nanos": 500,
+      "currency_code": "USD"
+    },
+    "cost_output": {
+      "units": 0,
+      "nanos": 1500,
+      "currency_code": "USD"
+    }
+  },
+  {
+    "provider": "openai",
+    "model": "gpt-3.5-turbo",
+    "releases": [
+      "0125"
+    ],
+    "cost_input": {
+      "units": 0,
+      "nanos": 500,
+      "currency_code": "USD"
+    },
+    "cost_output": {
+      "units": 0,
+      "nanos": 1500,
+      "currency_code": "USD"
+    }
+  },
+  {
+    "provider": "openai",
+    "model": "gpt-3.5-turbo-instruct",
+    "releases": null,
+    "cost_input": {
+      "units": 0,
+      "nanos": 1500,
+      "currency_code": "USD"
+    },
+    "cost_output": {
+      "units": 0,
+      "nanos": 2000,
+      "currency_code": "USD"
+    }
+  },
+  {
+    "provider": "openai",
+    "model": "gpt-3.5-turbo",
+    "releases": [
+      "1106"
+    ],
+    "cost_input": {
+      "units": 0,
+      "nanos": 1000,
+      "currency_code": "USD"
+    },
+    "cost_output": {
+      "units": 0,
+      "nanos": 2000,
+      "currency_code": "USD"
+    }
+  },
+  {
+    "provider": "openai",
+    "model": "gpt-3.5-turbo",
+    "releases": [
+      "0613"
+    ],
+    "cost_input": {
+      "units": 0,
+      "nanos": 1500,
+      "currency_code": "USD"
+    },
+    "cost_output": {
+      "units": 0,
+      "nanos": 2000,
+      "currency_code": "USD"
+    }
+  },
+  {
+    "provider": "openai",
+    "model": "gpt-3.5-turbo",
+    "releases": [
+      "16k-0613"
+    ],
+    "cost_input": {
+      "units": 0,
+      "nanos": 3000,
+      "currency_code": "USD"
+    },
+    "cost_output": {
+      "units": 0,
+      "nanos": 4000,
+      "currency_code": "USD"
+    }
+  },
+  {
+    "provider": "openai",
+    "model": "gpt-3.5-turbo",
+    "releases": [
+      "0301"
+    ],
+    "cost_input": {
+      "units": 0,
+      "nanos": 1500,
+      "currency_code": "USD"
+    },
+    "cost_output": {
+      "units": 0,
+      "nanos": 2000,
+      "currency_code": "USD"
+    }
+  }
+]
